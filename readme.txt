@@ -96,7 +96,7 @@ Petfinder does not return video information through their API, however if you ha
 
 == Screenshots ==
 
-1. Settings Page
+1. Settings Page 
 2. Widget Settings
 3. Page with shortcode [shelter_list]
 4. Widget display

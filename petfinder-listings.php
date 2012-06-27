@@ -173,9 +173,46 @@ function petf_shelter_list( $atts ) {
 		'animal' => '',
         'include_info' => 'yes',
         'css_class' => 'pets'
+        'is_adopted'=>'no'
+        'children_approved'=>'no'
+        'is_special_needs'=>'no'
+        'has_name'=>'',
+        'has_age'=>'',
+        'is_declawed'=>'no',
+        'is_internal'=>'no',
+        'contact'=>'',
+        'animal_size='=>''
 	), $atts ) );
+
+    //build the url
+    $petfinderUrl = "http://api.petfinder.com/shelter.getPets?key=" . $petf_options["apikey"] ;
+    $petfinderUrl . "&count=" . intval($count);
+    $petfinderUrl . "&shelter_id=" . $shelter_id;
+    $petfinderUrl . "&output=full";
+    $petfinderUrl . "&pet_age=" . $has_age;
+    $petfinderUrl . "&pet_size=" . $animal_size;
+    if(strtolower($is_special_needs)!="no"){
+        $petfinderUrl . "&specialNeeds=X";
+    }
+    if(strtolower($is_declawed)!="no"){
+        $petfinderUrl . "&declawedPets=X";
+    }
+    if(strtolower($children_approved)!="no"){
+        $petfinderUrl . "&children=X";
+    }
+    if(strtolower($is_internal)!="no"){
+        $petfinderUrl . "&internal=X";
+    }
+    if(strtolower($is_adopted)=="no"){
+        $petfinderUrl . "&status=X";
+    }
+    $petfinderUrl . "&contact=" . $contact;
+    $petfinderUrl . "&pet_size=" . $pet_size;
+    $petfinderUrl . "&pet_age=" . $pet_age;
+    
+
 	//get the xml
-    $xml = simplexml_load_file( "http://api.petfinder.com/shelter.getPets?key=" . $petf_options["apikey"] . "&count=" . intval($count) . "&id=" . $shelter_id . "&output=full" );
+    $xml = simplexml_load_file($petfinderUrl);
     if( $xml->header->status->code == "100"){
         $output_buffer = "";
         if( count( $xml->pets->pet ) > 0 ){
