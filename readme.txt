@@ -1,5 +1,5 @@
-﻿=== Petfinder Listings ===
-Contributors: bridgetwes
+===Petfinder Listings Plus===
+Contributors: bridgetwes, chasepark
 Tags: petfinder, adoptable pets
 Requires at least: 3.0
 Tested up to: 3.4
@@ -8,10 +8,16 @@ License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 The Petfinder Listings plugin takes advantage of the Petfinder API and can be integrated into your site without coding.
+===Description===
+Briget's original petfinder plugin didn't quite cover all of the needs I had for a project I was working on. So I started with her initial plugin and added some of the API's missing functionality.
+Much of the documentation is brigetwes's and almost all of the work is, all I added was a few extra shortcode parameters to support:
 
-== Description ==
+1. Special Needs Pets
+2. Specific Pet Names
+3. Specific Pet IDs
+4. Adopted Pets
+5. Pets good for children
 
-Petfinder is a free site where shelters and rescues can post pets for adoption. The Petfinder Listings plugin takes advantage of the Petfinder API and can be integrated into your site without coding.  All you need is your Petfinder shelter id and free Petfinder API key.
 
 The Petfinder Listings plugin allows you to:
 
@@ -101,40 +107,6 @@ Petfinder does not return video information through their API, however if you ha
 3. Page with shortcode [shelter_list]
 4. Widget display
 
-== Changelog ==
-
-= 1.0.5 =
-* Added shortcode attribute include_info
-* Removed Setting Include Cat or Kid Safe and switched to shortcode attribute include_info
-* Added different css classes to each info list item.
-* Added a shortcode attribute css_class to set css class on div containing all pets.
-
-= 1.0.4 =
-* Added shortcode attributes animal and count
-* Added note on how to display video within description
-* Switched mixed breed dogs to not display when breed is set.
-
-= 1.0.3 =
-* Bug Fixes with repository set up
-
-= 1.0 =
-* This is the first version
-
-== Upgrade Notice ==
-
-= 1.0.5 =
-* Added shortcode attribute include_info
-* Removed Setting Include Cat or Kid Safe and switched to shortcode attribute include_info
-* Added different css classes to each info list item.
-* Added a shortcode attribute css_class to set css class on div containing all pets.
-
-= 1.0.4 =
-* Added shortcode attributes animal and count
-* Switched mixed breed dogs to not display when breed is set. 
-
-= 1.0.3 =
-* Bug Fixes with repository set up
-
-= 1.0 =
-First version
-
+=== Change Log ===
+v 0.0.1
+Added Additional Shortcodes.
