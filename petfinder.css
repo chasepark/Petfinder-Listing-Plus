@@ -1,0 +1,40 @@
+div.dog .name, div.dog .name a{
+    font-weight: bold;
+    font-size: 16px;
+    padding-bottom: 5px;
+}
+
+div.dog{
+    padding: 20px 0;
+}
+
+div.dog .images{
+    float: left;
+    margin-right: 15px;
+    margin-bottom: 15px;
+    margin-top: 5px; /**** this helps align image with top of text better ****/
+}
+
+img.petfinder-thumbmail{
+    margin: 3px 3px 3px 0;
+    cursor: pointer;
+}
+
+div.dog{
+    border-top: 1px dotted #515151;
+}
+
+div.featured_pet_name, div.featured_pet_name a{
+    font-weight: bold;
+    font-size: 16px;
+    padding-bottom: 5px;
+}
+
+.dog ul.pet-options{
+    list-style: none outside none;
+    padding:  0;
+}
+
+.dog ul.pet-options li{
+    list-style-type: none;
+}
