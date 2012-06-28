@@ -1,29 +1,14 @@
 <?php
 /*
-Plugin Name: Petfinder Listings
-Plugin URI: http://www.unboxinteractive.com/wordpress/petfinder-listings-plugin/
+Plugin Name: Petfinder Listings Plus
+Plugin URI: https://github.com/chasepark/Petfinder-Listing-Plus
 Description: The Petfinder Listings plugin takes advantage of the Petfinder API and can be integrated into your site without coding.
-Version: 1.0.6
-Author: Bridget Wessel
-Author URI: http://www.unboxinteractive.com/
+Version: 0.0.1
+Author: Bridget Wessel, chasepark
+Author URI: http://www.unboxinteractive.com/, http://chase-park.com
 License: GPLv2
 */
 
-/*  Copyright 2012 Bridget Wessel  (email : bridget@unboxinteractive.com)
-
-    This program is free software; you can redistribute it and/or modify
-    it under the terms of the GNU General Public License, version 2, as
-    published by the Free Software Foundation.
-
-    This program is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU General Public License for more details.
-
-    You should have received a copy of the GNU General Public License
-    along with this program; if not, write to the Free Software
-    Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
-*/
 
 /********** Add default styles ************/
 
@@ -140,7 +125,25 @@ function petf_options_page() {
 
         <tr>
             <th colspan="2"><p>After saving, create a page with the shortcode [shelter_list] in the content. View this page to see your listings.</p>
-                <p>You can also add the following options to your shortcode<br />[shelter_list shelter_id="another-shelter-id" breed="Italian Greyhound" count=75 animal="dog" include_info="yes" css_class="greyhounds"] </p></th>
+                <p>You can also add the following options to your shortcode: <br />
+                    <ul>
+                        <li>shelter_id&nbsp;<i>Default: "Your Shelter ID"</i></li>
+                        <li>breed&nbsp;<i>Default: ""</i></li>
+                        <li>count&nbsp;<i>Default: 75</i></li>
+                        <li>animal&nbsp;<i>Default: ""</i></li>
+                        <li>include_info&nbsp;<i>Default:"yes"</i></li>
+                        <li>css_class&nbsp;<i>Default:"pets"</i></li>
+                        <li>is_adopted&nbsp;<i>Default:"no"</i></li>
+                        <li>children_approved&nbsp;<i>Default:"" </i></li>
+                        <li>is_special_needs&nbsp;<i>Default:""</i></li>
+                        <li>has_name&nbsp;<i>Default:""</i></li>
+                        <li>has_age&nbsp;<i>Default:""</i></li>
+                        <li>is_declawed&nbsp;<i>Default:""</i></li>
+                        <li>is_internal&nbsp;<i>Default:""</i></li>
+                        <li>contact&nbsp;<i>Default:""</i></li>
+                        <li>animal_size&nbsp;<i>Default: ""</i></li>
+                    </ul>
+                 </p></th>
         </tr>
 
     </table>
@@ -186,29 +189,29 @@ function petf_shelter_list( $atts ) {
 
     //build the url
     $petfinderUrl = "http://api.petfinder.com/shelter.getPets?key=" . $petf_options["apikey"] ;
-    $petfinderUrl . "&count=" . intval($count);
-    $petfinderUrl . "&shelter_id=" . $shelter_id;
-    $petfinderUrl . "&output=full";
-    $petfinderUrl . "&pet_age=" . $has_age;
-    $petfinderUrl . "&pet_size=" . $animal_size;
+    $petfinderUrl .= "&count=" . intval($count);
+    $petfinderUrl .= "&shelter_id=" . $shelter_id;
+    $petfinderUrl .= "&output=full";
+    $petfinderUrl .= "&pet_age=" . $has_age;
+    $petfinderUrl .= "&pet_size=" . $animal_size;
     if(strtolower($is_special_needs)!="no"){
-        $petfinderUrl . "&specialNeeds=X";
+        $petfinderUrl .= "&specialNeeds=X";
     }
     if(strtolower($is_declawed)!="no"){
-        $petfinderUrl . "&declawedPets=X";
+        $petfinderUrl .= "&declawedPets=X";
     }
     if(strtolower($children_approved)!="no"){
-        $petfinderUrl . "&children=X";
+        $petfinderUrl .="&children=X";
     }
     if(strtolower($is_internal)!="no"){
-        $petfinderUrl . "&internal=X";
+        $petfinderUrl .= "&internal=X";
     }
     if(strtolower($is_adopted)=="no"){
-        $petfinderUrl . "&status=X";
+        $petfinderUrl .= "&status=X";
     }
-    $petfinderUrl . "&contact=" . $contact;
-    $petfinderUrl . "&pet_size=" . $pet_size;
-    $petfinderUrl . "&pet_age=" . $pet_age;
+    $petfinderUrl .= "&contact=" . $contact;
+    $petfinderUrl .= "&pet_size=" . $pet_size;
+    $petfinderUrl .= "&pet_age=" . $pet_age;
     
 
 	//get the xml
@@ -335,6 +338,7 @@ function petf_shelter_list( $atts ) {
 				} //animal does not match
             }
             $output_buffer .= "</div>";
+            $output_buffer .="<div class="divider top-of-page"></div>";
         }else{
            $output_buffer .= "No dogs are listed for this shelter at this time.  Please check back soon.";
         }
